@@ -3,48 +3,28 @@ name: Build and Release Prebuilds
 on:
   push:
     tags:
-      - 'v*'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build-windows:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        arch: [x64, ia32]
 
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci --ignore-scripts
 
-      - name: Build prebuild
-        run: npx prebuild -r napi --arch ${{ matrix.arch }} --strip
+      - name: Prebuild x64
+        run: npx prebuild -r napi --arch x64 --strip --upload ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload prebuilds artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: prebuilds-win32-${{ matrix.arch }}
-          path: prebuilds/
-
-  release:
-    needs: build-windows
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: all-prebuilds
-          merge-multiple: true
-
-      - name: Create GitHub Release and upload assets
-        uses: softprops/action-gh-release@v2
-        with:
-          files: all-prebuilds/**/*.tar.gz
+      - name: Prebuild ia32
+        run: npx prebuild -r napi --arch ia32 --strip --upload ${{ secrets.GITHUB_TOKEN }}
