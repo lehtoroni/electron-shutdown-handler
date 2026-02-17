@@ -26,7 +26,8 @@
     "napi_versions": [
       6
     ],
-    "host": "https://github.com/lehtoroni/electron-shutdown-handler/releases/download"
+    "host": "https://github.com/lehtoroni/electron-shutdown-handler/releases/download",
+    "remote_path": "v{version}"
   },
   "files": [
     "binding.gyp",
