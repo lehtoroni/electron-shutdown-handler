@@ -1,9 +1,9 @@
 # Electron Shutdown Handler
 
-[![NPM](https://img.shields.io/npm/v/@paymoapp/electron-shutdown-handler)](https://www.npmjs.com/package/@paymoapp/electron-shutdown-handler)
-[![Typescript](https://img.shields.io/npm/types/@paymoapp/electron-shutdown-handler)](https://www.npmjs.com/package/@paymoapp/electron-shutdown-handler)
-[![N-API](https://raw.githubusercontent.com/nodejs/abi-stable-node/doc/assets/Node-API%20v6%20Badge.svg)](https://github.com/nodejs/node-addon-api)
-[![License](https://img.shields.io/github/license/paymoapp/electron-shutdown-handler)](https://www.gnu.org/licenses/gpl-3.0.txt)
+> [!NOTE]
+> The original repo at [@paymoapp/electron-shutdown-handler](https://github.com/@paymoapp/electron-shutdown-handler) was probably moved to [paymo-org/electron-shutdown-handler](https://github.com/paymo-org/electron-shutdown-handler), causing the prebuilt dependency to stop working. This is just a quick fork to get it working again in a project.
+
+----
 
 NodeJS library using native modules to capture the shutdown events on Windows in Electron applications.
 
@@ -11,14 +11,20 @@ NodeJS library using native modules to capture the shutdown events on Windows in
 
 <!-- toc -->
 
-- [Getting started](#getting-started)
-    - [Installation](#installation)
-    - [Native addon](#native-addon)
-    - [Example](#example)
-    - [Usage](#usage)
-- [API](#api)
-    - [Functions](#functions)
-    - [Events](#events)
+- [Electron Shutdown Handler](#electron-shutdown-handler)
+		- [Table of Contents](#table-of-contents)
+	- [Getting started](#getting-started)
+			- [Installation](#installation)
+			- [Native addon](#native-addon)
+			- [Example](#example)
+			- [Usage](#usage)
+	- [API](#api)
+			- [Functions](#functions)
+					- [𝑓    setWindowHandle](#𝑓--setwindowhandle)
+					- [𝑓    blockShutdown](#𝑓--blockshutdown)
+					- [𝑓    releaseShutdown](#𝑓--releaseshutdown)
+			- [Events](#events)
+					- [✨    shutdown](#--shutdown)
 
 <!-- tocstop -->
 
